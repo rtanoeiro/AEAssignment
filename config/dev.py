@@ -4,6 +4,9 @@ password = "securepassword"
 database = "platform_dev"
 table_name = "events"
 user = "analytics"
+bucket_name = "to_be_defined"
+reports_folder = "reports"
+data_folder = "data"
 
 datatypes = {
     "transaction_id": "INT",
