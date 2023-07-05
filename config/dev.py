@@ -2,6 +2,7 @@ environment = "dev"
 host = "company1@country.co"
 password = "securepassword"
 database = "platform_dev"
+table_name = "events"
 user = "analytics"
 
 datatypes = {
