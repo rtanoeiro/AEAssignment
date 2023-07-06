@@ -1,7 +1,8 @@
 You just started working for a company that sells products for a couple of countries in the world.
 
-The Data Engineering team set up a process where you will receive a file into an s3 bucket on a daily basis.
-The file will be under the following folder:
+The Data Engineering team set up a process where you will receive a file into an s3 bucket on a daily basis. (An example of the last one is available under the ```data/``` folder).
+
+On AWS S3, the file will be under the following folder:
 
 ```data/platform_transactions.csv```
 
@@ -13,12 +14,12 @@ This repository should contain a framework to:
 - Clean/transform the data
 - Ingest into a Data Lake
 - Create 2 reports
-  - Total value of transactions and send to the Finance Team
-  - Total number of transactions and sent to the Marketing Team
+  - Total value of transactions and send to the Finance Team (```reports/``` folder inside the AWS S3 bucket)
+  - Total number of transactions and sent to the Marketing Team (```reports/``` folder inside the AWS S3 bucket)
 
 Details:
 
-- Our Data Lake details are set up in the config folder
+- Our Data Lake details are set up in the config folder (There are 3 environments, dev, stage and prod, but only prod is on the script)
 - The Data Lake only contains 1 database, 1 schema, and 1 table inside it. All are defined inside the config folder too.
 - At the moment, only 2 reports are created, one for the Finance Team and another one for the Marketing Team
 
