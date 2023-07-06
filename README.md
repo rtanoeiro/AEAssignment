@@ -21,15 +21,15 @@ This repository should contain a framework to:
 
 - Grab the data from an s3 bucket
 - Clean/transform the data
-- Ingest into a Data Warehouse
+- Ingest into a Data Lake
 - Create 2 reports
   - Total value of transactions and send to the Finance Team
   - Total number of transactions and sent to the Marketing Team
 
 Details:
 
-- Our data warehouse details are set up in the config folder
-- The data warehouse only contains 1 database, 1 schema, and 1 table inside it. All are defined inside the config folder too.
+- Our Data Lake details are set up in the config folder
+- The Data Lake only contains 1 database, 1 schema, and 1 table inside it. All are defined inside the config folder too.
 - At the moment, only 2 reports are created, one for the Finance Team and another one for the Marketing Team
 
 You arrive on your first day at the job and see this repository. In the current state, the scripts work, it can manage all tasks required.
