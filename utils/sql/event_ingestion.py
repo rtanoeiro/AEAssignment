@@ -6,6 +6,9 @@ from .transformations import fill_customer_country, fill_gender
 
 
 def ingest_data():
+    '''
+    Ingests data into a pseudo PostgreSQL database
+    '''
     connection_string = f"postgresql://{user}:{password}@{host}/{database}"
     engine = create_engine(connection_string)
 
