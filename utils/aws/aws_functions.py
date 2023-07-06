@@ -1,7 +1,6 @@
 import boto3
 from config.config import bucket_name
 
-
 def get_daily_data(download_from, download_to):
     """
     Get daily data from S3 bucket
