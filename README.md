@@ -4,17 +4,9 @@ The Data Engineering team set up a process where you will receive a file into an
 
 On AWS S3, the file will be under the following folder:
 
-```data/YYYY-MM-DD/platform_transactions.csv```
+```data/platform_transactions.csv```
 
-For example, in there you should have:
-
-```data/2023-07-02/platform_transactions.csv```
-
-```data/2023-07-03/platform_transactions.csv```
-
-```data/2023-07-04/platform_transactions.csv```
-
-```etc...```
+After transformation, the files will be loaded into the S3 buckets `reports` folder.
 
 This repository should contain a framework to:
 
@@ -35,3 +27,7 @@ You arrive on your first day at the job and see this repository. In the current 
 But there are new clients and products that will be added to the company soon, and more teams will request new reports, what would you do?
 
 Would you change the current state of the repository or not? If you decide to do some changes, fork this repo and share with us!
+
+----
+**IMPORTANT**: <br>
+Before doing anything else, in `config.py`, rename the `folder_alias` variable to your `LASTNAME_initials` (ex. `DELACRUZ_J`, `SMITH_S`)
