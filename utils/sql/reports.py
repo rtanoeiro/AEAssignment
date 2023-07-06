@@ -1,7 +1,7 @@
 from base_queries import FINANCE_QUERY, MARKETING_QUERY
 import pandas as pd
 from sqlalchemy import create_engine
-from config.dev import host, database, user, password, table_name
+from config.config import host, database, user, password, table_name
 
 
 def create_reports():
