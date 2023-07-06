@@ -4,9 +4,10 @@ password = "securepassword"
 database = "platform_dev"
 table_name = "events"
 user = "analytics"
-bucket_name = "to_be_defined"
+bucket_name = "test-ae-exam-public"
 reports_folder = "reports"
 data_folder = "data"
+folder_alias = "TESTING"
 
 datatypes = {
     "transaction_id": "INT",
