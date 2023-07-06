@@ -1,5 +1,5 @@
 import boto3
-from config.dev import bucket_name
+from config.config import bucket_name
 
 
 def get_daily_data(download_from, download_to):

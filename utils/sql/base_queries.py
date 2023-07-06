@@ -2,7 +2,7 @@ import datetime
 
 from dateutil.relativedelta import relativedelta
 
-from config.dev import database, datatypes, table_name
+from config.config import database, datatypes, table_name
 
 column_definition = ",\n".join(
     f"{column_name} {column_type}" for column_name, column_type in datatypes.items()

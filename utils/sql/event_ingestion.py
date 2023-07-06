@@ -1,7 +1,7 @@
 from base_queries import EVENTS
 import pandas as pd
 from sqlalchemy import create_engine
-from config.dev import host, database, user, password, table_name
+from config.config import host, database, user, password, table_name
 from transformations import fill_customer_country, fill_gender
 
 
