@@ -1,4 +1,3 @@
-# from .base_queries import FINANCE_QUERY, MARKETING_QUERY
 from clients.data_lake import connect_data_lake
 import pandas as pd
 import os
@@ -7,21 +6,21 @@ def query_data_lake(query, working_dir):
   engine = connect_data_lake()
   data_df = pd.read_sql(query, engine)
   return data_df
+
+def generate_report(report_details, working_dir):
+  report_dept = report_details['department']
+  report_query = report_details['query']
   
-def generate_finance_reports(finance_query, working_dir):
-  finance_report = query_data_lake(finance_query, working_dir)
-  finance_report_path = os.path.join(working_dir, 'finance_report.csv')
-  finance_report.to_csv(finance_report_path)
+  report_data = query_data_lake(report_query, working_dir)
+  report_filepath = os.path.join(working_dir,f'{report_dept}_report.csv')
+  report_data.to_csv(report_filepath)
   
-  print(
-        f"Finance report saved to {finance_report_path}. The report contains {len(finance_report)} rows."
-    )
-  
-def generate_marketing_reports(marketing_query, working_dir):
-  marketing_report = query_data_lake(marketing_query, working_dir)
-  marketing_report_path = os.path.join(working_dir, 'marketing_report.csv')
-  marketing_report.to_csv(marketing_report_path)
-  
-  print(
-        f"Marketing report saved to {marketing_report_path}. The report contains {len(marketing_report)} rows."
-    )
+  print(f"{report_dept.capitalize()} report saved to {report_filepath}. The report contains {len(report_data)} rows.")
+  return report_filepath
+
+def generate_all_reports(reports_list, working_dir):
+  report_filepaths_list = []
+  for report in reports_list:
+    filepath = generate_report(report, working_dir)
+    report_filepaths_list.append(filepath)
+  return report_filepaths_list
