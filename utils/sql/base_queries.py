@@ -1,5 +1,5 @@
 from config.config import database, table_name
-from func import define_columns, join_columns, month_period
+from .db_func import define_columns, join_columns, month_period
 
 
 # CREATE TABLE AND INSERT DATA
