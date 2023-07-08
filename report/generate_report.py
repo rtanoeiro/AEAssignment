@@ -1,9 +1,10 @@
 from clients.data_lake import connect_data_lake
 import pandas as pd
 import os
+from config.config import user, password, host, database 
 
-def query_data_lake(query, working_dir):
-  engine = connect_data_lake()
+def query_data_lake(query):
+  engine = connect_data_lake(user,password,host,database)
   data_df = pd.read_sql(query, engine)
   return data_df
 
@@ -11,7 +12,7 @@ def generate_report(report_details, working_dir):
   report_dept = report_details['department']
   report_query = report_details['query']
   
-  report_data = query_data_lake(report_query, working_dir)
+  report_data = query_data_lake(report_query)
   report_filepath = os.path.join(working_dir,f'{report_dept}_report.csv')
   report_data.to_csv(report_filepath)
   
