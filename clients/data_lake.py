@@ -1,5 +1,6 @@
 import sqlalchemy
 from sqlalchemy import create_engine
+from config.config import host, database, user, password
 
 def connect_data_lake(user,password,host,database):
     # create a connection string
