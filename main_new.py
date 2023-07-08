@@ -1,7 +1,8 @@
-from config.config import bucket_name, data_folder, reports_folder, folder_alias 
+from config.config import bucket_name, data_folder, reports_folder, folder_alias, host, database, user, password, table_name
 from clients.data_lake import connect_data_lake
 from extract.get_s3_data import download_file
 from transform.transform_data import apply_transformations
+from load.load_data import load_data
 from report.generate_report import generate_all_reports
 from report.upload_report import upload_all_reports
 from report.reports import reports_list
@@ -24,7 +25,7 @@ def main():
   
   
  # Load Data
-  # connect_data_lake(user,password,host,database)
+  load_data(transformed_data, host, database, user, password, table_name)
  
  # Generate Reports
  
