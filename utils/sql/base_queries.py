@@ -1,17 +1,10 @@
-import datetime
-
-from dateutil.relativedelta import relativedelta
-
-from config.config import database, datatypes, table_name
-
-column_definition = ",\n".join(
-    f"{column_name} {column_type}" for column_name, column_type in datatypes.items()
-)
-column_tuple = ", ".join(datatypes.keys())
-month_beggining = datetime.date.today().replace(day=1)
-month_end = month_beggining + relativedelta(day=31)
+from config.config import database, table_name
+from func import define_columns, join_columns, month_period
 
 
+# CREATE TABLE AND INSERT DATA
+column_definition = define_columns()
+column_tuple = join_columns()
 EVENTS = f"""
 CREATE TABLE IF NOT EXISTS {database}.{table_name} (
 {column_definition}
@@ -21,6 +14,11 @@ INSERT INTO {database}.{table_name} ({column_tuple})
 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
 """
 
+# QUERY DATA FOR REPORTING DEPARTMENT
+
+month_beggining, month_end = month_period()
+
+# Finance
 FINANCE_QUERY = f"""
 WITH TRANSACTIONS AS (
     SELECT * FROM {database}.{table_name}
@@ -33,6 +31,8 @@ FROM TRANSACTIONS
 WHERE TRANSACTION_DATE BETWEEN {month_beggining} AND {month_end}
 """
 
+
+# Marketing
 MARKETING_QUERY = f"""
 WITH TRANSACTIONS AS (
     SELECT * FROM {database}.{table_name}
