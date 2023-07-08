@@ -16,11 +16,11 @@ def generate_report(report_details, working_dir):
   report_data.to_csv(report_filepath)
   
   print(f"{report_dept.capitalize()} report saved to {report_filepath}. The report contains {len(report_data)} rows.")
-  return report_filepath
+  return report_filepath, report_dept
 
 def generate_all_reports(reports_list, working_dir):
-  report_filepaths_list = []
+  report_filepaths_dict = {}
   for report in reports_list:
-    filepath = generate_report(report, working_dir)
-    report_filepaths_list.append(filepath)
-  return report_filepaths_list
+    filepath, dept = generate_report(report, working_dir)
+    report_filepaths_dict[dept] = filepath
+  return report_filepaths_dict
