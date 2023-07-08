@@ -1,11 +1,10 @@
 from config.config import bucket_name, data_folder, reports_folder, folder_alias
-from clients.data_lake import connect_data_lake
-from extract.get_s3_data import download_file
-from transform.transform_data import apply_transformations
-from load.load_data import load_data
-from report.generate_report import generate_all_reports
-from report.upload_report import upload_all_reports
-from report.reports import reports_list
+from utils.extract.get_s3_data import download_file
+from utils.transform.transform_data import apply_transformations
+from utils.load.load_data import load_data
+from utils.report.generate_report import generate_all_reports
+from utils.report.upload_report import upload_all_reports
+from utils.report.reports import reports_list
 import os
 
 # Data source
@@ -21,7 +20,7 @@ s3_download_file_path = os.path.join(working_dir, s3_file_name)
 def main():
 
 # Extract S3 data
-  download_file(bucket_name, s3_file_path,s3_download_file_path)
+  download_file(bucket_name, s3_file_path, s3_download_file_path)
 
  # Transform data 
   transformed_data = apply_transformations(s3_download_file_path)

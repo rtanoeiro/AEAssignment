@@ -15,7 +15,11 @@ def fill_gender(data):
   
 def apply_transformations(extracted_data_filepath):
   """Applies all transformations to extracted data"""
-  extracted_data = read_data(extracted_data_filepath)
-  transformed_data = fill_customer_country(extracted_data)
-  transformed_data = fill_gender(transformed_data)
-  return transformed_data
+  try:
+    extracted_data = read_data(extracted_data_filepath)
+    transformed_data = fill_customer_country(extracted_data)
+    transformed_data = fill_gender(transformed_data)
+    print('Applied transformations to data')
+    return transformed_data
+  except Exception as e:
+    print(f'Error occured while transforming data: {e}')
