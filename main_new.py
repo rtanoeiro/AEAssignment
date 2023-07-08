@@ -1,9 +1,10 @@
-from config.config import bucket_name, data_folder, host, database, user, password, table_name
+from config.config import bucket_name, data_folder, reports_folder, folder_alias 
 from clients.data_lake import connect_data_lake
-from utils.sql.base_queries import FINANCE_QUERY, MARKETING_QUERY
 from extract.get_s3_data import download_file
 from transform.transform_data import apply_transformations
-from report.generate_report import generate_finance_reports, generate_marketing_reports
+from report.generate_report import generate_all_reports
+from report.upload_report import upload_all_reports
+from report.reports import reports_list
 import os
 
 s3_file_name = 'platform_transactions.csv'
@@ -27,8 +28,11 @@ def main():
  
  # Generate Reports
  
-  generate_finance_reports(FINANCE_QUERY, working_dir)
-  generate_marketing_reports(MARKETING_QUERY, working_dir)
+  report_filepaths_dict = generate_all_reports(reports_list, working_dir)
+
+# Upload Reports
+
+  upload_all_reports(report_filepaths_dict, bucket_name, reports_folder, folder_alias)
 
 if __name__ == "__main__":
     main()
